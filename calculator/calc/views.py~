@@ -1,0 +1,22 @@
+from django.shortcuts import render
+from django.http import HttpResponse
+import operator
+def count(requests):
+    mytext=requests.GET['fulltext']
+    calc=list(mytext.split(" "))
+    n=len(calc)
+    select=input("Enter + - * /")
+    for i in calc:
+        if select == '+':
+            print(int(calc[0])+int(calc[n-1]))
+        if select == '-':
+            print(int(calc[0])-int(calc[n-1]))
+        if select == '*':
+            print(int(calc[0])*int(calc[n-1]))
+        if select == '/':
+            print(int(calc[0])//int(calc[n-1]))
+    return render(requests,'calc/count.html',{'mycount':calc})
+def home(requests):
+    return render(requests,'calc/home.html')
+
+# Create your views here.
